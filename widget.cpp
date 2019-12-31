@@ -23,7 +23,19 @@ Widget::Widget(QWidget *parent) :
     rxtimer->setInterval(0);        //超时时间间隔
 
     timer->start(SERIAL_TIME);    //串口没打开时，设置每隔2秒扫描一次可用串口
+    QDateTime time = QDateTime::currentDateTime();
+    QString strtl = time.toString("yy");
+    //qDebug() << strtl <<endl;
+    int year ;
+    for(int i = 0; i < 4; i++)
+    {
+        ui->comboBox_radioYear->addItem(strtl);
+        year = strtl.toInt();
+        year++;
+        strtl = QString::number(year);
 
+
+    }
     searchSerial();
     show_Widgets();
 }
@@ -89,7 +101,7 @@ void Widget::timeUpSerial()
 //串口数据接收rxSerialbuf
 void Widget::recv_data(void)
 {
-    rxtimer->start(5); //50ms超时时间，根据实际来调整超时时间
+    rxtimer->start(2); //50ms超时时间，根据实际来调整超时时间
 
     rxSerialbuf.append(mserial->readAll()); //触发函数后把缓冲区数据全部接收到rxSerialbuf
 }
@@ -183,12 +195,12 @@ void Widget::show_Widgets()
 //进入配置模式命令
 void Widget::on_pushButton_radioConfig_clicked()
 {
-    mserial->write("settab");
+    mserial->write("settab\r\n");
 }
 //保存参数命令
 void Widget::on_pushButton_radioSave_clicked()
 {
-    mserial->write("saved");
+    mserial->write("saved\r\n");
 }
 //写参数命令
 void Widget::on_pushButton_radioWriteNumber_clicked()
@@ -197,7 +209,7 @@ void Widget::on_pushButton_radioWriteNumber_clicked()
     QByteArray txBytes;
 
     int index = 0;
-    str = "S";
+    str = "$huasi&set#pid S";
     if(ui->comboBox_radioLanguage->currentIndex() == 1)
     {
 
@@ -242,6 +254,7 @@ void Widget::on_pushButton_radioWriteNumber_clicked()
     str.append(ui->lineEdit_radioNumber->text());
     str.append("\r\n");
     //qDebug() << <<endl;
+    //qDebug() <<str<<endl;
     txBytes = str.toLatin1();   //把字符串转换成字节缓冲区类型
     mserial->write(txBytes);
 }

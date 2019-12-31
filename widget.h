@@ -7,6 +7,7 @@
 #include "QtSerialPort/QSerialPortInfo"
 #include "QTimer"
 #include <QMessageBox>
+#include <QDateTime>
 namespace Ui {
 class Widget;
 }
