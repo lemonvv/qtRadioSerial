@@ -21,6 +21,7 @@ public:
     ~Widget();
     void searchSerial();
     void show_Widgets();
+    void setBoxValue();
 
 private slots:
     void on_pushButton_openSerial_clicked();
@@ -41,11 +42,24 @@ private slots:
 
     void rxtimeSearchData(void);
 
+    void on_pushButton_radioPwrHh_clicked();
+
+    void on_pushButton_radioPwrHl_clicked();
+
+    void on_pushButton_radioPwrLh_clicked();
+
+    void on_pushButton_radioPwrLl_clicked();
+
+    void on_pushButton_radioTestMode_clicked();
+
+    void radio_txData();
+
 private:
     Ui::Widget *ui;
     QSerialPort *mserial;
     QTimer *timer;
     QTimer *rxtimer;
+    QTimer *radioTxmodeTimer;
     QByteArray rxSerialbuf;
 };
 
