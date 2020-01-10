@@ -54,6 +54,9 @@ private slots:
 
     void radio_txData();
 
+
+    void on_pushButton_radioReadPower_clicked();
+
 private:
     Ui::Widget *ui;
     QSerialPort *mserial;

@@ -9,6 +9,7 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    setWindowTitle(tr("超级电台测试版本 V1.0.1"));
     timer = new QTimer(this);   //扫描串口定时器
     rxtimer = new QTimer(this); //接收数据定时器
     radioTxmodeTimer = new QTimer(this);    //测试模式
@@ -34,6 +35,7 @@ Widget::Widget(QWidget *parent) :
     setBoxValue();
     searchSerial();
     show_Widgets();
+
 }
 
 Widget::~Widget()
@@ -335,32 +337,68 @@ void Widget::on_pushButton_radioWriteNumber_clicked()
 void Widget::on_pushButton_radioPwrHh_clicked()
 {
     char str[200];
-    sprintf(str,"suchannelh 1 23 %d 2 23 %d 3 23 %d 4 23 %d 5 23 %d 6 23 %d\r\n",
-            ui->spinBox_h_1->value(),ui->spinBox_h_2->value(),ui->spinBox_h_3->value(),ui->spinBox_h_4->value(),ui->spinBox_h_5->value(),ui->spinBox_h_6->value());
+    if(ui->comboBox_radioType->currentIndex() == 0)
+    {
+        sprintf(str,"suchannelh 1 1 23 %d 2 23 %d 3 23 %d 4 23 %d 5 23 %d 6 23 %d\r\n",
+                ui->spinBox_h_1->value(),ui->spinBox_h_2->value(),ui->spinBox_h_3->value(),ui->spinBox_h_4->value(),ui->spinBox_h_5->value(),ui->spinBox_h_6->value());
+    }
+    else
+    {
+        sprintf(str,"suchannelh 0 1 23 %d 2 23 %d 3 23 %d 4 23 %d 5 23 %d 6 23 %d\r\n",
+                ui->spinBox_h_1->value(),ui->spinBox_h_2->value(),ui->spinBox_h_3->value(),ui->spinBox_h_4->value(),ui->spinBox_h_5->value(),ui->spinBox_h_6->value());
+    }
+
     mserial->write(str);
 }
 
 void Widget::on_pushButton_radioPwrHl_clicked()
 {
     char str[200];
-    sprintf(str,"suchannelh 7 23 %d 8 23 %d 9 23 %d 10 23 %d 11 23 %d 12 23 %d\r\n",
-            ui->spinBox_h_7->value(),ui->spinBox_h_8->value(),ui->spinBox_h_9->value(),ui->spinBox_h_10->value(),ui->spinBox_h_11->value(),ui->spinBox_h_12->value());
+    if(ui->comboBox_radioType->currentIndex() == 0)
+    {
+        sprintf(str,"suchannelh 1 7 23 %d 8 23 %d 9 23 %d 10 23 %d 11 23 %d 12 23 %d\r\n",
+                ui->spinBox_h_7->value(),ui->spinBox_h_8->value(),ui->spinBox_h_9->value(),ui->spinBox_h_10->value(),ui->spinBox_h_11->value(),ui->spinBox_h_12->value());
+    }
+    else
+    {
+        sprintf(str,"suchannelh 0 7 23 %d 8 23 %d 9 23 %d 10 23 %d 11 23 %d 12 23 %d\r\n",
+                ui->spinBox_h_7->value(),ui->spinBox_h_8->value(),ui->spinBox_h_9->value(),ui->spinBox_h_10->value(),ui->spinBox_h_11->value(),ui->spinBox_h_12->value());
+    }
+
     mserial->write(str);
 }
 
 void Widget::on_pushButton_radioPwrLh_clicked()
 {
     char str[200];
-    sprintf(str,"suchannell 1 20 %d 2 20 %d 3 20 %d 4 20 %d 5 20 %d 6 20 %d\r\n",
-            ui->spinBox_l_1->value(),ui->spinBox_l_2->value(),ui->spinBox_l_3->value(),ui->spinBox_l_4->value(),ui->spinBox_l_5->value(),ui->spinBox_l_6->value());
+    if(ui->comboBox_radioType->currentIndex() == 0)
+    {
+        sprintf(str,"suchannell 1 1 20 %d 2 20 %d 3 20 %d 4 20 %d 5 20 %d 6 20 %d\r\n",
+                ui->spinBox_l_1->value(),ui->spinBox_l_2->value(),ui->spinBox_l_3->value(),ui->spinBox_l_4->value(),ui->spinBox_l_5->value(),ui->spinBox_l_6->value());
+    }
+    else
+    {
+        sprintf(str,"suchannell 0 1 20 %d 2 20 %d 3 20 %d 4 20 %d 5 20 %d 6 20 %d\r\n",
+                ui->spinBox_l_1->value(),ui->spinBox_l_2->value(),ui->spinBox_l_3->value(),ui->spinBox_l_4->value(),ui->spinBox_l_5->value(),ui->spinBox_l_6->value());
+    }
+
     mserial->write(str);
 }
 
 void Widget::on_pushButton_radioPwrLl_clicked()
 {
     char str[200];
-    sprintf(str,"suchannell 7 20 %d 8 20 %d 9 20 %d 10 20 %d 11 20 %d 12 20 %d\r\n",
-            ui->spinBox_l_7->value(),ui->spinBox_l_8->value(),ui->spinBox_l_9->value(),ui->spinBox_l_10->value(),ui->spinBox_l_11->value(),ui->spinBox_l_12->value());
+    if(ui->comboBox_radioType->currentIndex() == 0)
+    {
+        sprintf(str,"suchannell 1 7 20 %d 8 20 %d 9 20 %d 10 20 %d 11 20 %d 12 20 %d\r\n",
+                ui->spinBox_l_7->value(),ui->spinBox_l_8->value(),ui->spinBox_l_9->value(),ui->spinBox_l_10->value(),ui->spinBox_l_11->value(),ui->spinBox_l_12->value());
+    }
+    else
+    {
+        sprintf(str,"suchannell 0 7 20 %d 8 20 %d 9 20 %d 10 20 %d 11 20 %d 12 20 %d\r\n",
+                ui->spinBox_l_7->value(),ui->spinBox_l_8->value(),ui->spinBox_l_9->value(),ui->spinBox_l_10->value(),ui->spinBox_l_11->value(),ui->spinBox_l_12->value());
+    }
+
     mserial->write(str);
 }
 
@@ -387,8 +425,14 @@ void Widget::radio_txData()
 
     radioTxmodeTimer->stop();
     memset(strbuf,'2',sizeof(strbuf));
-    strbuf[560]='\0';
+    strbuf[559]='\0';
     mserial->write(strbuf);
     radioTxmodeTimer->start(1000);
 
+}
+
+
+void Widget::on_pushButton_radioReadPower_clicked()
+{
+    mserial->write("powchannel\r\n");
 }
