@@ -22,6 +22,8 @@ public:
     void searchSerial();
     void show_Widgets();
     void setBoxValue();
+    void radio_ReadPower_Data(QString mbuf);
+    int radio_ReadPower_Flg;
 
 private slots:
     void on_pushButton_openSerial_clicked();

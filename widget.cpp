@@ -9,7 +9,7 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("超级电台测试版本 V1.0.1"));
+    setWindowTitle(tr("超级电台测试版本 V1.0.2"));
     timer = new QTimer(this);   //扫描串口定时器
     rxtimer = new QTimer(this); //接收数据定时器
     radioTxmodeTimer = new QTimer(this);    //测试模式
@@ -46,7 +46,15 @@ Widget::~Widget()
     }
     delete ui;
 }
-
+typedef struct
+{
+    int num;
+    int low;
+    int high;
+    int amp_low;
+    int amp_high;
+}power_t;
+power_t tPower[12];
 void Widget::setBoxValue(void)
 {
     int year ;
@@ -178,13 +186,63 @@ void Widget::rxtimeSearchData(void)
 
         QString str = ui->textBrowser_serialRxBuf->toPlainText();
         str+=myStrTemp;
+
         ui->textBrowser_serialRxBuf->clear();
         ui->textBrowser_serialRxBuf->append(str);
         ui->textBrowser_serialRxBuf->moveCursor(QTextCursor::End);
+        radio_ReadPower_Data(myStrTemp);
     }
     rxSerialbuf.clear();
 }
 
+void Widget::radio_ReadPower_Data(QString mbuf)
+{
+    if(radio_ReadPower_Flg == 1)
+    {
+
+        char bst[20];
+        char *str;
+        QByteArray buf;
+        buf = mbuf.toLatin1();
+        radio_ReadPower_Flg = 0;
+        for(int i = 0; i < 12; i++)
+        {
+            sprintf(bst,"number:%d",i+1);
+            str = strstr(buf,bst);
+            if(str == NULL)
+            {
+                return;
+            }
+            sscanf(str,"%*[^:]:%d%*[^:]:%d%*[^:]:%d%*[^:]:%d%*[^:]:%d",&tPower[i].num,&tPower[i].low,&tPower[i].high,&tPower[i].amp_low,&tPower[i].amp_high);
+        }
+        ui->spinBox_h_1->setValue(tPower[0].amp_high);
+        ui->spinBox_h_2->setValue(tPower[1].amp_high);
+        ui->spinBox_h_3->setValue(tPower[2].amp_high);
+        ui->spinBox_h_4->setValue(tPower[3].amp_high);
+        ui->spinBox_h_5->setValue(tPower[4].amp_high);
+        ui->spinBox_h_6->setValue(tPower[5].amp_high);
+        ui->spinBox_h_7->setValue(tPower[6].amp_high);
+        ui->spinBox_h_8->setValue(tPower[7].amp_high);
+        ui->spinBox_h_9->setValue(tPower[8].amp_high);
+        ui->spinBox_h_10->setValue(tPower[9].amp_high);
+        ui->spinBox_h_11->setValue(tPower[10].amp_high);
+        ui->spinBox_h_12->setValue(tPower[11].amp_high);
+
+        ui->spinBox_l_1->setValue(tPower[0].amp_low);
+        ui->spinBox_l_2->setValue(tPower[1].amp_low);
+        ui->spinBox_l_3->setValue(tPower[2].amp_low);
+        ui->spinBox_l_4->setValue(tPower[3].amp_low);
+        ui->spinBox_l_5->setValue(tPower[4].amp_low);
+        ui->spinBox_l_6->setValue(tPower[5].amp_low);
+        ui->spinBox_l_7->setValue(tPower[6].amp_low);
+        ui->spinBox_l_8->setValue(tPower[7].amp_low);
+        ui->spinBox_l_9->setValue(tPower[8].amp_low);
+        ui->spinBox_l_10->setValue(tPower[9].amp_low);
+        ui->spinBox_l_11->setValue(tPower[10].amp_low);
+        ui->spinBox_l_12->setValue(tPower[11].amp_low);
+
+    }
+}
 //打开串口
 void Widget::on_pushButton_openSerial_clicked()
 {
@@ -434,5 +492,6 @@ void Widget::radio_txData()
 
 void Widget::on_pushButton_radioReadPower_clicked()
 {
+    radio_ReadPower_Flg = 1;
     mserial->write("powchannel\r\n");
 }
