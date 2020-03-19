@@ -9,7 +9,7 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("超级电台测试版本 V1.0.2"));
+    setWindowTitle(tr("超级电台测试版本 V1.0.3"));
     timer = new QTimer(this);   //扫描串口定时器
     rxtimer = new QTimer(this); //接收数据定时器
     radioTxmodeTimer = new QTimer(this);    //测试模式
