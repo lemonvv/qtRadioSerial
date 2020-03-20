@@ -9,7 +9,7 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("超级电台测试版本 V1.0.3"));
+    setWindowTitle(tr("超级电台测试版本 V1.0.4"));
     timer = new QTimer(this);   //扫描串口定时器
     rxtimer = new QTimer(this); //接收数据定时器
     radioTxmodeTimer = new QTimer(this);    //测试模式
@@ -261,6 +261,9 @@ void Widget::on_pushButton_openSerial_clicked()
             mserial->setStopBits(QSerialPort::OneStop);
             connect(mserial,SIGNAL(readyRead()),this,SLOT(recv_data()));
             timer->stop();
+            //QString str =
+            ui->textBrowser_serialRxBuf->append("打开 "+ui->comboBox_serialPort->currentText()+" 成功");
+            ui->textBrowser_serialRxBuf->moveCursor(QTextCursor::End);
         }
         else
         {
@@ -268,6 +271,8 @@ void Widget::on_pushButton_openSerial_clicked()
             timer->start(SERIAL_TIME);
             radioTxmodeTimer->stop();
             ui->pushButton_openSerial->setText("打开");
+            ui->textBrowser_serialRxBuf->append("打开 "+ui->comboBox_serialPort->currentText()+"错误");
+            ui->textBrowser_serialRxBuf->moveCursor(QTextCursor::End);
             QMessageBox::warning(nullptr,"Warning","串口打开错误",QMessageBox::Close);
         }
 
@@ -280,6 +285,8 @@ void Widget::on_pushButton_openSerial_clicked()
 
         timer->start(SERIAL_TIME);
         radioTxmodeTimer->stop();
+        ui->textBrowser_serialRxBuf->append("关闭 "+ui->comboBox_serialPort->currentText());
+        ui->textBrowser_serialRxBuf->moveCursor(QTextCursor::End);
 
     }
     show_Widgets();
@@ -308,6 +315,9 @@ void Widget::show_Widgets()
         ui->pushButton_radioPwrLh->setEnabled(false);
         ui->pushButton_radioPwrLl->setEnabled(false);
 
+        ui->pushButton_netConfig->setEnabled(false);
+        ui->pushButton_netTest->setEnabled(false);
+
     }
     else
     {
@@ -321,6 +331,9 @@ void Widget::show_Widgets()
         ui->pushButton_radioPwrHl->setEnabled(true);
         ui->pushButton_radioPwrLh->setEnabled(true);
         ui->pushButton_radioPwrLl->setEnabled(true);
+
+        ui->pushButton_netConfig->setEnabled(true);
+        ui->pushButton_netTest->setEnabled(true);
     }
 
 
@@ -494,4 +507,86 @@ void Widget::on_pushButton_radioReadPower_clicked()
 {
     radio_ReadPower_Flg = 1;
     mserial->write("powchannel\r\n");
+}
+
+//给电台发送网络参数 "setnetwork user 1234 www.baidu.com 5000 RTCM32_GGB cmnet"
+void Widget::on_pushButton_netConfig_clicked()
+{
+    QString str;
+    QString uistr;
+    QByteArray sendByte;
+    str = "setnetwork ";
+    uistr = ui->lineEdit_netUser->text();
+    if(uistr.isEmpty())
+    {
+        qDebug()<<"参数为空"<<endl;
+        ui->textBrowser_serialRxBuf->append("请输入用户名\n");
+        return;
+    }
+    uistr += " ";
+    str.append(uistr);
+
+    uistr = ui->lineEdit_netPwd->text();
+    if(uistr.isEmpty())
+    {
+        qDebug()<<"参数为空"<<endl;
+        ui->textBrowser_serialRxBuf->append("请输入密码\n");
+        return;
+    }
+    uistr += " ";
+    str.append(uistr);
+
+    uistr = ui->lineEdit_netIP->text();
+    if(uistr.isEmpty())
+    {
+        qDebug()<<"参数为空"<<endl;
+        ui->textBrowser_serialRxBuf->append("请输入ip\n");
+        return;
+    }
+    uistr += " ";
+    str.append(uistr);
+
+    uistr = ui->lineEdit_netPort->text();
+    if(uistr.isEmpty())
+    {
+        qDebug()<<"参数为空"<<endl;
+        ui->textBrowser_serialRxBuf->append("请输入端口\n");
+        return;
+    }
+    uistr += " ";
+    str.append(uistr);
+
+    uistr = ui->comboBox_netMount->currentText();
+    if(uistr.isEmpty())
+    {
+        qDebug()<<"参数为空"<<endl;
+        return;
+    }
+    uistr += " ";
+    str.append(uistr);
+
+    uistr = ui->comboBox_netAPN->currentText();
+    if(uistr.isEmpty())
+    {
+        qDebug()<<"参数为空"<<endl;
+        return;
+    }
+    //uistr += " ";
+    str.append(uistr);
+    qDebug()<<str<<endl;
+
+    sendByte = str.toLatin1();
+
+    mserial->write(sendByte);
+
+    //ui->textBrowser_serialRxBuf->append("配置 "+str);
+    ui->textBrowser_serialRxBuf->append("配置网络参数\n");
+    ui->textBrowser_serialRxBuf->moveCursor(QTextCursor::End);
+
+}
+//退出配置模式然后进行网络测试
+void Widget::on_pushButton_netTest_clicked()
+{
+    mserial->write("testnetwork\r\n");
+
 }

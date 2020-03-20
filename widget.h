@@ -59,6 +59,10 @@ private slots:
 
     void on_pushButton_radioReadPower_clicked();
 
+    void on_pushButton_netConfig_clicked();
+
+    void on_pushButton_netTest_clicked();
+
 private:
     Ui::Widget *ui;
     QSerialPort *mserial;

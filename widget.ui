@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
-    <height>450</height>
+    <width>687</width>
+    <height>451</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>611</width>
-    <height>450</height>
+    <width>687</width>
+    <height>451</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
     <rect>
      <x>0</x>
      <y>70</y>
-     <width>651</width>
+     <width>691</width>
      <height>221</height>
     </rect>
    </property>
@@ -38,7 +38,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="iconSize">
     <size>
@@ -49,6 +49,206 @@
    <property name="elideMode">
     <enum>Qt::ElideNone</enum>
    </property>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>网络</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_netUser">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>20</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_netPwd">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>60</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_netIP">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>20</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_netPort">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>60</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_32">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>54</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>用户名：</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_63">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>54</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>密码：</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_64">
+     <property name="geometry">
+      <rect>
+       <x>213</x>
+       <y>20</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>域名IP：</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_65">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>60</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>端口：</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_66">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>20</y>
+       <width>61</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>差分格式：</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_67">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>70</y>
+       <width>54</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>APN：</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_netMount">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>20</y>
+       <width>101</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <item>
+      <property name="text">
+       <string>RTCM32_GGB</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>RTCM30_GG</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_netAPN">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>60</y>
+       <width>101</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <item>
+      <property name="text">
+       <string>cmnet</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ctnet</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3gnet</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton_netConfig">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>120</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>配置网络数据</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_netTest">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>160</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>进入网络测试</string>
+     </property>
+    </widget>
+   </widget>
    <widget class="QWidget" name="tab">
     <attribute name="title">
      <string>写号</string>
@@ -1115,7 +1315,7 @@
     <rect>
      <x>0</x>
      <y>10</y>
-     <width>651</width>
+     <width>691</width>
      <height>61</height>
     </rect>
    </property>
@@ -1224,8 +1424,8 @@
   <widget class="QPushButton" name="pushButton_cleanRecv">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>410</y>
+     <x>580</x>
+     <y>400</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -1237,8 +1437,8 @@
   <widget class="QPushButton" name="pushButton_radioSave">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>370</y>
+     <x>580</x>
+     <y>350</y>
      <width>75</width>
      <height>23</height>
     </rect>

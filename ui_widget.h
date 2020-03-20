@@ -27,6 +27,21 @@ class Ui_Widget
 {
 public:
     QTabWidget *tabWidget;
+    QWidget *tab_2;
+    QLineEdit *lineEdit_netUser;
+    QLineEdit *lineEdit_netPwd;
+    QLineEdit *lineEdit_netIP;
+    QLineEdit *lineEdit_netPort;
+    QLabel *label_32;
+    QLabel *label_63;
+    QLabel *label_64;
+    QLabel *label_65;
+    QLabel *label_66;
+    QLabel *label_67;
+    QComboBox *comboBox_netMount;
+    QComboBox *comboBox_netAPN;
+    QPushButton *pushButton_netConfig;
+    QPushButton *pushButton_netTest;
     QWidget *tab;
     QGroupBox *groupBox_2;
     QComboBox *comboBox_radioLanguage;
@@ -115,16 +130,68 @@ public:
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QStringLiteral("Widget"));
-        Widget->resize(650, 450);
-        Widget->setMinimumSize(QSize(611, 450));
+        Widget->resize(687, 451);
+        Widget->setMinimumSize(QSize(687, 451));
         tabWidget = new QTabWidget(Widget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(0, 70, 651, 221));
+        tabWidget->setGeometry(QRect(0, 70, 691, 221));
         tabWidget->setLayoutDirection(Qt::RightToLeft);
         tabWidget->setTabPosition(QTabWidget::South);
         tabWidget->setTabShape(QTabWidget::Rounded);
         tabWidget->setIconSize(QSize(16, 16));
         tabWidget->setElideMode(Qt::ElideNone);
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QStringLiteral("tab_2"));
+        lineEdit_netUser = new QLineEdit(tab_2);
+        lineEdit_netUser->setObjectName(QStringLiteral("lineEdit_netUser"));
+        lineEdit_netUser->setGeometry(QRect(90, 20, 101, 20));
+        lineEdit_netPwd = new QLineEdit(tab_2);
+        lineEdit_netPwd->setObjectName(QStringLiteral("lineEdit_netPwd"));
+        lineEdit_netPwd->setGeometry(QRect(90, 60, 101, 20));
+        lineEdit_netIP = new QLineEdit(tab_2);
+        lineEdit_netIP->setObjectName(QStringLiteral("lineEdit_netIP"));
+        lineEdit_netIP->setGeometry(QRect(270, 20, 113, 20));
+        lineEdit_netPort = new QLineEdit(tab_2);
+        lineEdit_netPort->setObjectName(QStringLiteral("lineEdit_netPort"));
+        lineEdit_netPort->setGeometry(QRect(270, 60, 113, 20));
+        label_32 = new QLabel(tab_2);
+        label_32->setObjectName(QStringLiteral("label_32"));
+        label_32->setGeometry(QRect(20, 20, 54, 20));
+        label_63 = new QLabel(tab_2);
+        label_63->setObjectName(QStringLiteral("label_63"));
+        label_63->setGeometry(QRect(20, 60, 54, 20));
+        label_64 = new QLabel(tab_2);
+        label_64->setObjectName(QStringLiteral("label_64"));
+        label_64->setGeometry(QRect(213, 20, 51, 20));
+        label_65 = new QLabel(tab_2);
+        label_65->setObjectName(QStringLiteral("label_65"));
+        label_65->setGeometry(QRect(220, 60, 51, 20));
+        label_66 = new QLabel(tab_2);
+        label_66->setObjectName(QStringLiteral("label_66"));
+        label_66->setGeometry(QRect(420, 20, 61, 20));
+        label_67 = new QLabel(tab_2);
+        label_67->setObjectName(QStringLiteral("label_67"));
+        label_67->setGeometry(QRect(420, 70, 54, 12));
+        comboBox_netMount = new QComboBox(tab_2);
+        comboBox_netMount->addItem(QString());
+        comboBox_netMount->addItem(QString());
+        comboBox_netMount->setObjectName(QStringLiteral("comboBox_netMount"));
+        comboBox_netMount->setGeometry(QRect(500, 20, 101, 22));
+        comboBox_netMount->setLayoutDirection(Qt::LeftToRight);
+        comboBox_netAPN = new QComboBox(tab_2);
+        comboBox_netAPN->addItem(QString());
+        comboBox_netAPN->addItem(QString());
+        comboBox_netAPN->addItem(QString());
+        comboBox_netAPN->setObjectName(QStringLiteral("comboBox_netAPN"));
+        comboBox_netAPN->setGeometry(QRect(500, 60, 101, 22));
+        comboBox_netAPN->setLayoutDirection(Qt::LeftToRight);
+        pushButton_netConfig = new QPushButton(tab_2);
+        pushButton_netConfig->setObjectName(QStringLiteral("pushButton_netConfig"));
+        pushButton_netConfig->setGeometry(QRect(500, 120, 101, 23));
+        pushButton_netTest = new QPushButton(tab_2);
+        pushButton_netTest->setObjectName(QStringLiteral("pushButton_netTest"));
+        pushButton_netTest->setGeometry(QRect(500, 160, 101, 23));
+        tabWidget->addTab(tab_2, QString());
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         groupBox_2 = new QGroupBox(tab);
@@ -402,7 +469,7 @@ public:
         tabWidget->addTab(Tab2, QString());
         groupBox = new QGroupBox(Widget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(0, 10, 651, 61));
+        groupBox->setGeometry(QRect(0, 10, 691, 61));
         groupBox->setMinimumSize(QSize(611, 61));
         comboBox_serialPort = new QComboBox(groupBox);
         comboBox_serialPort->setObjectName(QStringLiteral("comboBox_serialPort"));
@@ -428,10 +495,10 @@ public:
         label_2->setGeometry(QRect(170, 20, 51, 20));
         pushButton_cleanRecv = new QPushButton(Widget);
         pushButton_cleanRecv->setObjectName(QStringLiteral("pushButton_cleanRecv"));
-        pushButton_cleanRecv->setGeometry(QRect(560, 410, 75, 23));
+        pushButton_cleanRecv->setGeometry(QRect(580, 400, 75, 23));
         pushButton_radioSave = new QPushButton(Widget);
         pushButton_radioSave->setObjectName(QStringLiteral("pushButton_radioSave"));
-        pushButton_radioSave->setGeometry(QRect(560, 370, 75, 23));
+        pushButton_radioSave->setGeometry(QRect(580, 350, 75, 23));
         textBrowser_serialRxBuf = new QTextBrowser(Widget);
         textBrowser_serialRxBuf->setObjectName(QStringLiteral("textBrowser_serialRxBuf"));
         textBrowser_serialRxBuf->setGeometry(QRect(0, 270, 551, 181));
@@ -439,7 +506,7 @@ public:
 
         retranslateUi(Widget);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Widget);
@@ -448,6 +515,22 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", nullptr));
+        label_32->setText(QApplication::translate("Widget", "\347\224\250\346\210\267\345\220\215\357\274\232", nullptr));
+        label_63->setText(QApplication::translate("Widget", "\345\257\206\347\240\201\357\274\232", nullptr));
+        label_64->setText(QApplication::translate("Widget", "\345\237\237\345\220\215IP\357\274\232", nullptr));
+        label_65->setText(QApplication::translate("Widget", "\347\253\257\345\217\243\357\274\232", nullptr));
+        label_66->setText(QApplication::translate("Widget", "\345\267\256\345\210\206\346\240\274\345\274\217\357\274\232", nullptr));
+        label_67->setText(QApplication::translate("Widget", "APN\357\274\232", nullptr));
+        comboBox_netMount->setItemText(0, QApplication::translate("Widget", "RTCM32_GGB", nullptr));
+        comboBox_netMount->setItemText(1, QApplication::translate("Widget", "RTCM30_GG", nullptr));
+
+        comboBox_netAPN->setItemText(0, QApplication::translate("Widget", "cmnet", nullptr));
+        comboBox_netAPN->setItemText(1, QApplication::translate("Widget", "ctnet", nullptr));
+        comboBox_netAPN->setItemText(2, QApplication::translate("Widget", "3gnet", nullptr));
+
+        pushButton_netConfig->setText(QApplication::translate("Widget", "\351\205\215\347\275\256\347\275\221\347\273\234\346\225\260\346\215\256", nullptr));
+        pushButton_netTest->setText(QApplication::translate("Widget", "\350\277\233\345\205\245\347\275\221\347\273\234\346\265\213\350\257\225", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Widget", "\347\275\221\347\273\234", nullptr));
         groupBox_2->setTitle(QApplication::translate("Widget", "\347\224\265\345\217\260\351\205\215\347\275\256", nullptr));
         comboBox_radioLanguage->setItemText(0, QApplication::translate("Widget", "\344\270\255\346\226\207", nullptr));
         comboBox_radioLanguage->setItemText(1, QApplication::translate("Widget", "English", nullptr));
