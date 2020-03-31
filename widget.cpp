@@ -9,7 +9,7 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("超级电台测试版本 V1.0.4"));
+    setWindowTitle(tr("超级电台测试版本 V1.0.5"));
     timer = new QTimer(this);   //扫描串口定时器
     rxtimer = new QTimer(this); //接收数据定时器
     radioTxmodeTimer = new QTimer(this);    //测试模式
@@ -366,6 +366,7 @@ void Widget::on_pushButton_radioWriteNumber_clicked()
         str.append("0");
     }
     index = ui->comboBox_radioBrand->currentIndex();
+
     switch (index)
     {
     case 0:
@@ -377,19 +378,15 @@ void Widget::on_pushButton_radioWriteNumber_clicked()
         str.append("00");
         break;
     case 2:
-
-        str.append("03");
-        break;
-    case 3:
         str.append("06");
         break;
-    case 4:
+    case 3:
         str.append("07");
         break;
-    case 5:
+    case 4:
         str.append("08");
         break;
-    case 6:
+    case 5:
         str.append("09");
         break;
     default:

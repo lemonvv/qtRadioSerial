@@ -211,7 +211,6 @@ public:
         comboBox_radioBrand->addItem(QString());
         comboBox_radioBrand->addItem(QString());
         comboBox_radioBrand->addItem(QString());
-        comboBox_radioBrand->addItem(QString());
         comboBox_radioBrand->setObjectName(QStringLiteral("comboBox_radioBrand"));
         comboBox_radioBrand->setGeometry(QRect(170, 30, 81, 22));
         comboBox_radioBrand->setLayoutDirection(Qt::LeftToRight);
@@ -506,7 +505,7 @@ public:
 
         retranslateUi(Widget);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Widget);
@@ -537,11 +536,10 @@ public:
 
         comboBox_radioBrand->setItemText(0, QApplication::translate("Widget", "\351\200\232\347\224\250", nullptr));
         comboBox_radioBrand->setItemText(1, QApplication::translate("Widget", "\344\270\255\346\265\267\350\276\276", nullptr));
-        comboBox_radioBrand->setItemText(2, QApplication::translate("Widget", "\344\270\255\347\272\254", nullptr));
-        comboBox_radioBrand->setItemText(3, QApplication::translate("Widget", "\346\213\223\346\231\256\345\272\267", nullptr));
-        comboBox_radioBrand->setItemText(4, QApplication::translate("Widget", "\345\256\276\345\276\227", nullptr));
-        comboBox_radioBrand->setItemText(5, QApplication::translate("Widget", "\345\205\211\350\260\261", nullptr));
-        comboBox_radioBrand->setItemText(6, QApplication::translate("Widget", "\345\244\251\345\256\235", nullptr));
+        comboBox_radioBrand->setItemText(2, QApplication::translate("Widget", "\346\213\223\346\231\256\345\272\267", nullptr));
+        comboBox_radioBrand->setItemText(3, QApplication::translate("Widget", "\345\256\276\345\276\227", nullptr));
+        comboBox_radioBrand->setItemText(4, QApplication::translate("Widget", "\345\205\211\350\260\261", nullptr));
+        comboBox_radioBrand->setItemText(5, QApplication::translate("Widget", "\345\244\251\345\256\235", nullptr));
 
         comboBox_radioMonth->setItemText(0, QApplication::translate("Widget", "01", nullptr));
         comboBox_radioMonth->setItemText(1, QApplication::translate("Widget", "02", nullptr));

@@ -38,7 +38,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <property name="iconSize">
     <size>
@@ -314,11 +314,6 @@
       <item>
        <property name="text">
         <string>中海达</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>中纬</string>
        </property>
       </item>
       <item>
